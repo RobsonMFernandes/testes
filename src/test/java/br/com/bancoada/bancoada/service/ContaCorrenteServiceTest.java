@@ -177,4 +177,12 @@ public class ContaCorrenteServiceTest {
         assertEquals("Conta inexistente", retornoEexception.getMessage());
     }
 
+    //* Implementar o teste unitário do criar conta;
+    @Test
+    void testarCriarNovaConta () {
+        when(repository.save(contaCorrente)).thenReturn(contaCorrente);
+        ContaCorrente contaCriada = service.criarConta(contaCorrente);
+        assertNotNull(contaCriada);
+    }
+
 }

@@ -19,9 +19,18 @@ public class ContaCorrenteService {
     }
 
     public ContaCorrente criarConta(ContaCorrente contaCorrente) {
-        // toda a lógica para salvar uma nova conta no banco de dados
-        return null;
-    }
+
+        //Implementar o método criar conta no service;
+        //1. um titular deve ser informado
+        if (contaCorrente.getTitular() == null) {
+            throw new IllegalArgumentException("Um Titular deve ser informado");
+        }
+        //2. não é possível criar uma conta com zero ou menos reais, deve começar com um valor
+        if (contaCorrente.getSaldo() == null || contaCorrente.getSaldo().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new ContaSemSaldoException("Saldo inicial deve ser maior que 0.");
+        }
+
+        return repository.save(contaCorrente);
 
     public BigDecimal sacar(int contaCorrenteId, BigDecimal valor) {
 

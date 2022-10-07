@@ -22,12 +22,12 @@ public class ContaCorrenteController {
 
     private final ContaCorrenteService service;
 
+    //Implementar o endpoint criar conta;
     @PostMapping("nova-conta")
     public ContaCorrente criarNovaConta(@RequestBody ContaCorrente contaCorrente) {
-        contaCorrente = new ContaCorrente();
-        contaCorrente.setId(idConta);
-
-        return null;
+        // chamada para uma nova conta
+        ContaCorrente contaCriada = service.criarConta(contaCorrente);
+        return contaCriada;
     }
 
     // www.bancoada.com/conta-corrente/saldo?id=1
